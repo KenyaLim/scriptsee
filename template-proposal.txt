@@ -1,0 +1,277 @@
+﻿JUDUL  [TIMES  NEW  ROMAN  14  BOLD]
+MAKSIMAL 14 KATA (INDONESIA)
+
+
+
+
+Proposal Tugas Akhir Skripsi
+
+
+
+
+
+
+ UKDW_logo_bw.png 
+
+
+
+Diajukan oleh:
+NAMA LENGKAP
+NIM
+
+
+
+
+
+
+
+
+PROGRAM STUDI INFORMATIKA
+FAKULTAS TEKNOLOGI INFORMASI
+UNIVERSITAS KRISTEN DUTA WACANA
+YOGYAKARTA
+[TAHUN]
+________________
+[Judul Lengkap Usulan untuk Tugas Akhir Skripsi (Serupa dengan halaman sampul)]
+
+
+Mata kuliah pendukung
+	:
+	1. Pengantar Keamanan Jaringan
+	[Nilai]
+	
+
+	
+
+	2. [Jika Ada]
+	[Nilai]
+	
+
+	
+
+	
+
+	
+
+	Mata kuliah wajib profil
+	:
+	1. Pengantar Keamanan Jaringan
+	A
+	
+
+	
+
+	2. Keamanan Jaringan
+	A
+	
+
+	
+
+	
+
+	
+
+	Profesi Lulusan
+	:
+	[ PSD / AI / DMS / NI ] *) pilih
+	
+
+	                
+
+
+
+
+NIM
+	:
+	[Tuliskan NIM]
+	Nama Lengkap
+	:
+	[Tuliskan Nama Lengkap]
+	IPK
+	:
+	[IPK Anda]
+	No. HP
+	:
+	[No HP (WA)]
+	Email
+	:
+	[Email @ti.ukdw.ac.id Anda]
+	
+
+
+
+
+
+Proposal ini diajukan dalam seminar kolokium sebagai persyaratan untuk memulai penulisan skripsi.        
+
+
+Proposal Desk Evaluation [I/II]
+Semester [Gasal / Genap] [Tahun Akademik]
+[Tahun]
+________________
+HALAMAN PERSETUJUAN PROPOSAL
+
+
+
+
+
+
+
+
+
+
+Pada tanggal ………..
+
+
+Proposal dengan keterangan:
+NIM                        : [NIM MAHASISWA]
+JUDUL PROPOSAL        : [JUDUL PROPOSAL]
+Telah disetujui oleh:
+
+
+
+
+
+
+
+
+
+
+
+
+Calon Dosen Pembimbing 1
+	Calon Dosen Pembimbing 2
+	
+
+
+
+
+
+
+
+	
+
+	Nama Lengkap Dosen
+	Nama Lengkap Dosen
+	________________
+1. Latar Belakang
+Latar belakang merupakan penjelasan dilakukannya penelitian atau penjelasan mengenai alasan mengapa objek yang diungkapkan dalam judul penelitian dianggap menarik dan penting untuk diteliti. Dengan demikian, latar belakang tidak menguraikan manfaat penelitian. 
+
+
+Latar belakang dapat dikaitkan dengan masalah, keadaan, atau peristiwa factual yang timbul dalam kehidupan sehari-hari. Bagian ini juga dapat berupa kelanjutan peneliti terhadap suatu teori, pemikiran, atau metode tertentu yang telah dikerjakan sebelumnya.  Hal ini sangat dianjurkan untuk dituliskan dengan mengacu pada penelitian sebelumnya menggunakan sitasi APA.
+
+
+Dalam latar belakang dilakukan pula identifikasi masalah, yakti pembatasan yang dipilih oleh si peneliti sehubungan dengan objek formal penelitiannya (cara pandang penelitian yang memfokus hanya pada segi tertentu).
+(Apa yang tertulis dalam keterangan di bagian ini mengacu pada tulisan Wibowo, W. (2011), berjudul “Cara Cerdas Menulis Artikel Ilmiah”, halaman 38 - 39)
+2. Rumusan Masalah
+Perumusan masalah berisikan penjabaran atau rincian lebih lanjut dari masalah mendasar yang terkandung di dalam judul penelitian Oleh karena itu, judul penelitian harus memiliki objek material dan objek formal yang jelas.
+Judul penelitian juga harus dibatasi lingkupnya agar masalah di dalam penelitian dapat diidentifikasikan sehingga penelitian dapat dilakukan secara mendalam.
+Mengingat problem mendasar yang terkandung di dalam judul penelitian harus dipertanyakan secara argumentative, perumusan masalah juga harus diwujudkan dalam bentuk pertanyaan yang dapat dilandaskan pada empat kategori pengetahuan:
+1. pertanyaan apa digunakan jika problem mendasarnya berhubungan dengan pengetahuan esensial atau substansial, yakni pengetahuan ilmiah yang akan memberikan suatu jawaban yang terkonteks dengan hakikat, intisari, atau makna terdalam.
+2. pertanyaan mengapa digunakan jika masalah mendasarnya bertalian dengan pengetahuan kausal, yaknik pengetahuan ilmiah yang akan memberikan suatu jawaban yang bersifat sebab-akibat.
+3. pertanyaan bagaimana digunakan jika masalah mendasarnya bertalian dengan pengetahuan deskriptif, yakni pengetahuan ilmiah yang akan memberikan suatu keterangan atau penjelasan objektif mengenai beradanya sesuatu atau bekerjanya sesuatu.
+4. pertanyaan ke mana atau untuk apa digunakan jika masalah mendasarnya berhubungan dengan pengetahuan normative, yakni pengetahuan ilmiah yang akan memberikan suatu jawaban yang bertalian dengan nilai kegunaan.
+5. Perumusan masalah dengan demikian bukanlah perulangan secara paraphrase terhadap judul penelitian. (Apa yang tertulis dalam keterangan di bagian ini mengacu pada tulisan Wibowo, W. (2011), berjudul “Cara Cerdas Menulis Artikel Ilmiah”, halaman 39 - 40)
+3. Batasan Masalah
+Di dalam batasan masalah dijelaskan parameter-parameter lingkungan penelitian yang menjadi pembatas dalam penelitian yang dilakukan.  Batasan masalah ada yang tidak Anda lakukan dalam penelitian.  Misalnya: sistem yang dibangun tidak membahas masalah keamanan sistem.
+4. Tujuan Penelitian
+Tujuan penelitian berisikan hal spesifik apa saja yang menjadi tujuan yang hendak dicapai berkaitan dengan masalah penelitian. Sebagai contoh di rumusan masalah berisikan “Seberapa baik kinerja sistem temu kembali yang dikembangkan dengan penerapan metode XXXX terhadap kumpulan dokumen web berdasar parameter evaluasi precission dan recall?”. Maka dalam uraian tujuan penelitian dapat diuraikan sebagai berikut: “mengembangkan sebuah sistem temu kembali berdasar algorithma XXXXX terhadap kumpulan dokumen web dan mengevaluasi kinerjanya dengan menggunakan parameter pengukuran precission dan recall.”
+(Apa yang tertulis dalam keterangan di bagian ini mengacu pada tulisan Wibowo, W. (2011), berjudul “Cara Cerdas Menulis Artikel Ilmiah”, halaman 41)\
+
+
+5. Manfaat Penelitian
+Bagain ini berisi manfaaat yang dapat diperoleh setelah penelitian selesai.  Tuliskan sebanyak mungkin maanfaat yang bisa diperoleh terutama yang berkaitan langsung dengan penelitian selanjutnya, kepada masyarakat, kepada kehidupan, dan hal berguna lainnya.
+6. Tinjauan Pustaka dan Landasan Teori
+Tinjauan pustaka berisi penelitian-penelitian terkait dengan penelitian Anda.  Penelitian tersebut disusun sesuai dengan bentuk umum ke khusus  dan harus diberi referensi in-text citation menggunakan APA.  Cara menggunakan APA dapat menggunakan Word atau Mendeley.  Tuliskan semua hal-hal penting lain yang menjadi dasar Anda dalam melakukan penelitian. Hal-hal penting yang tertulis harus diselaraskan dengan judul dan rumusan masalah yang terungkap pada bagian sebelumnya. Beberapa format penulisan yang perlu diperhatikan, antara lain tentang table, gambar, rumus, dan referensi.  Berikan juga contoh kasus sebagai pelengkap.  (Chrismanto, Lukito, & Mahastama, 2020).  Landasan teori berisi teori-teori pendukung penelitian (seperti misal teori tentang algoritma tertentu dan rumus-rumusnya).
+
+
+6.1. Tabel 
+Tabel harus diberi nomor dengan sesuai urutan presentasi (Tabel 1, dst.). Judul tabel ditulis di atas tabel dengan posisi rata kiri (left justified) sejajar dengan bagian kiri tabel. Judul tabel dituliskan di bawah nomor tabel. Isi tabel ditulis menggunakan Times New Roman 10, baris pertama (nama  kolom) ditulis menggunakan bold, seperti pada contoh berikut:  Tuliskan referensi tabel jika ada.  Semua tabel harus diacu/direferensi di teks.  Contoh: seperti yang dapat dilihat pada Tabel 1.
+
+
+Tabel 1. Daftar Soal yang akan diselesaikan dengan algoritma DLS [Times New Roman 11]
+ID
+	Jenis Papan
+	Ukuran Papan
+	Jenis Soal
+	Jumlah Kelereng
+	1.
+	Inggris
+	3 x 3
+	Standar
+	32
+	2.
+	Inggris
+	3 x 3
+	Bank Soal
+	16
+	3.
+	Triangular
+	4 x 4
+	Standar
+	9
+	
+
+
+
+6.2. Gambar
+Gambar diberi nomor sesuai urutan presentasi (Gambar 1., dst.). Judul gambar diletakkan di bawah gambar dengan posisi tengah (centered). Tulisan “Gambar” di tulis menggunakan italic. Jika gambar diambil dari sumber lain, tuliskan  sumber di bawah keterangan gambar menggunakan Times New Roman 9, spasi tunggal.  Tuliskan referensi gambar jika ada.  Semua gambar harus diacu/direferensi di teks.  Contoh: seperti yang dapat dilihat pada Gambar 1.  (Santosa, 2019).  
+  
+
+
+
+6.3. Formula
+Formula / rumus / persamaan ditulis secara jelas dengan indeks sesuai urutan presentasi, seperti pada contoh berikut:
+  
+
+ [1]
+
+
+Semua rumus harus diacu/direferensi di teks.  Contoh: seperti yang dapat dilihat pada Persamaan 1.
+7. Blok Diagram Sistem
+Bagian ini berisikan flowchat, topologi jaringan, use case, activity diagram, dan atau blok diagram sistem yang dapat menjelaskan gambaran besar kerja sistem yang akan dibangun.  Blok diagram sistem dapat dibuat dari umum ke khusus.  Blok diagram umum dapat kemudian diturunkan ke blok diagram khusus.
+8. Metode Penelitian
+Metode disini merujuk pada suatu kumpulan prinsip atau teknik yang digunakan untuk memecahkan suatu masalah secara ilmiah. Dalam bagian ini bisa juga diuraikan pendekatan-pendekatan serta algoritma yang digunakan.  Tuliskan secara runtun dan logis langkah-langkah penelitian Anda disini.
+
+
+Pada bagian ini, mahasiswa wajib mengisi Tabel 2 yang berisi detail dari metode penelitian.
+ 
+Tabel 2. Tabel Metode Penelitian (Contoh dalam Text Processing)
+Metode/Langkah
+	Input
+	Proses
+	Output
+	Tool (Opsional)
+	Pre-processing data Twitter tentang Piala Dunia 2022 untuk sentimen analisis
+	Dokumen teks dalam dataframe Pandas Python
+	Tokenisasi
+	Token
+	Python NLTK
+	Stopwords removal
+	Token bersih
+	Stopwords English
+	Normalisasi
+	Token normal
+	NLTK
+	
+
+	
+
+	
+
+	
+
+	
+
+	9. Daftar Pustaka
+Daftar pustaka wajib menggunakan tool reference manager seperti Mendeley, Word, atau Zotero.  Format penulisan referensi mengacu pada format APA (American Psychological Association). Anda diwajibkan untuk mengacu pada tutorial di http://owl.english.purdue.edu/owl/resource/560/01/.  
+
+
+Cara menggunakan Word:
+1. Pilih menu References
+2. Pilih insert citation dan pastikan manage source sudah diisi dengan semua sumber referensi dan style diisi dengan APA.
+3. Untuk daftar pustaka pilih Bibliography dan pilih Bibliography pada halaman daftar pustaka yang sesuai.
+4. Dapat juga menggunakan reference manager lain seperti: Mendeley
+Contoh Daftar Pustaka Dengan Word
+Chrismanto, A. R., Lukito, Y., & Mahastama, A. W. (2020, 10 17). Program yang Mengubah Dunia. KNASTIK 2020, pp. 23-25.
+Santosa, G. (2019). Statistik Sederhana. Yogyakarta: Penerbit Andi.
