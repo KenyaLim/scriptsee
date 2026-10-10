@@ -1,0 +1,335 @@
+
+Pengembangan dan Evaluasi Aplikasi Deteksi Port Scanning Berdasarkan Karakteristik Traffic Jaringan Menggunakan Python 
+
+
+Proposal Tugas Akhir Skripsi
+
+
+
+
+
+Diajukan oleh:
+NAMA LENGKAP
+NIM
+
+
+
+
+PROGRAM STUDI INFORMATIKA
+FAKULTAS TEKNOLOGI INFORMASI
+UNIVERSITAS KRISTEN DUTA WACANA
+YOGYAKARTA
+[TAHUN]
+[Judul Lengkap Usulan untuk Tugas Akhir Skripsi (Serupa dengan halaman sampul)]
+
+Mata kuliah pendukung
+:
+1. [Tuliskan mata kuliah pendukung yang sudah diambil]
+[Nilai]
+
+
+
+
+2. [Jika Ada]
+[Nilai]
+
+
+
+
+
+
+
+
+Mata kuliah wajib profil
+:
+1. [Tuliskan daftar mata kuliah wajib profil yang sudah diambil]
+[Nilai]
+
+
+
+
+2. [Jika Ada]
+[Nilai]
+
+
+
+
+
+
+
+
+Profesi Lulusan
+:
+[ PSD / AI / DMS / NI ] *) pilih
+
+
+
+		
+
+
+NIM
+:
+[Tuliskan NIM]
+Nama Lengkap
+:
+[Tuliskan Nama Lengkap]
+IPK
+:
+[IPK Anda]
+No. HP
+:
+[No HP (WA)]
+Email
+:
+[Email @ti.ukdw.ac.id Anda]
+
+
+
+
+Proposal ini diajukan dalam seminar kolokium sebagai persyaratan untuk memulai penulisan skripsi.	
+
+Proposal Desk Evaluation [I/II]
+Semester [Gasal / Genap] [Tahun Akademik]
+[Tahun]
+HALAMAN PERSETUJUAN PROPOSAL
+
+
+
+
+
+Pada tanggal ………..
+
+Proposal dengan keterangan:
+NIM			: [NIM MAHASISWA]
+JUDUL PROPOSAL	: [JUDUL PROPOSAL]
+Telah disetujui oleh:
+
+
+
+
+
+
+Calon Dosen Pembimbing 1
+Calon Dosen Pembimbing 2
+
+
+
+
+
+
+
+Nama Lengkap Dosen
+Nama Lengkap Dosen
+
+1. Latar Belakang
+Jaringan komputer memungkinkan berbagai perangkat berkomunikasi melalui alamat dan port tertentu. Port digunakan untuk mengidentifikasi endpoint layanan pada suatu host. Kondisi tersebut menyebabkan informasi mengenai port yang aktif menjadi salah satu informasi yang dapat dicari sebelum seseorang melakukan serangan lanjutan.
+Port scanning merupakan aktivitas yang digunakan untuk mengidentifikasi port atau layanan yang tersedia pada host maupun jaringan. Penelitian mengenai port scanning menunjukkan bahwa aktivitas tersebut dapat digunakan untuk memperoleh informasi mengenai target sebelum serangan berikutnya dilakukan (Chabchoub et al., 2014).
+Aktivitas port scanning menghasilkan karakteristik traffic tertentu. Pada vertical port scan, misalnya, satu sumber dapat mengirimkan koneksi atau probe menuju banyak destination port pada host yang sama. Jumlah destination port yang berbeda dalam suatu sliding window dapat menjadi salah satu parameter yang digunakan untuk mendeteksi port scanning (Chabchoub et al., 2014).
+Port scanning juga dapat dilakukan dengan pola yang lebih lambat untuk mengurangi kemungkinan terdeteksi oleh sistem yang menggunakan threshold sederhana. Penelitian mengenai slow port scanning menunjukkan bahwa pendeteksian tidak hanya dapat dilakukan berdasarkan jumlah paket, tetapi juga berdasarkan karakteristik flow, koneksi gagal, alamat IP, port, timestamp, dan TCP flags (Bortolameotti et al., 2018).
+Permasalahan tersebut menunjukkan bahwa aplikasi deteksi port scanning perlu diuji pada beberapa pola traffic. Sistem yang hanya menggunakan threshold jumlah port dalam interval tertentu dapat menghasilkan false positive ketika traffic normal memiliki banyak koneksi. Sebaliknya, threshold yang terlalu tinggi dapat menyebabkan scanning dengan intensitas rendah tidak terdeteksi.
+Penelitian ini mengembangkan aplikasi deteksi port scanning berbasis Python dengan menganalisis karakteristik traffic jaringan. Aplikasi mengambil informasi source IP, destination IP, destination port, protocol, TCP flags, timestamp, jumlah port berbeda, jumlah koneksi, dan pola koneksi. Scapy digunakan untuk menangkap dan menganalisis paket jaringan secara langsung maupun melalui file PCAP (Scapy Project, 2026).
+Penelitian kemudian menguji aplikasi pada traffic normal dan beberapa variasi port scanning. Variasi pengujian mencakup jumlah port yang dipindai, interval antarprobe, dan durasi scanning. Hasil deteksi dibandingkan dengan ground truth untuk memperoleh TP, TN, FP, dan FN. Selanjutnya dilakukan penghitungan Detection Rate, False Positive Rate, False Negative Rate, dan Detection Time.
+Dengan demikian, penelitian tidak hanya menghasilkan aplikasi deteksi, tetapi juga mengevaluasi kemampuan rule yang digunakan dalam mengenali karakteristik port scanning pada berbagai kondisi traffic.
+2. Rumusan Masalah
+Bagaimana mengembangkan aplikasi berbasis Python untuk menangkap dan menganalisis karakteristik traffic port scanning?
+Karakteristik traffic apa saja yang dapat digunakan sebagai dasar rule-based detection untuk port scanning?
+Bagaimana kemampuan aplikasi dalam mendeteksi port scanning dengan variasi jumlah port dan interval scanning?
+Bagaimana nilai Detection Rate, False Positive Rate, False Negative Rate, dan Detection Time yang dihasilkan aplikasi?
+3. Batasan Masalah
+Penelitian berfokus pada port scanning berbasis traffic jaringan.
+Penelitian tidak menggunakan Machine Learning atau Deep Learning.
+Penelitian menggunakan pendekatan rule-based detection.
+Penelitian berfokus pada IPv4 dan traffic TCP.
+Parameter yang dianalisis meliputi source IP, destination IP, destination port, TCP flags, timestamp, jumlah destination port berbeda, jumlah koneksi, dan interval koneksi.
+Penelitian tidak menganalisis payload aplikasi.
+Pengujian dilakukan dalam lingkungan jaringan yang terisolasi dan dikendalikan.
+Traffic penelitian terdiri dari traffic normal dan traffic port scanning.
+Variasi pengujian meliputi jumlah port, interval scanning, dan durasi scanning.
+Evaluasi menggunakan TP, TN, FP, FN, Detection Rate, False Positive Rate, False Negative Rate, dan Detection Time.
+Penelitian tidak membahas eksploitasi vulnerability setelah port ditemukan.
+
+4. Tujuan Penelitian
+Mengembangkan aplikasi berbasis Python untuk menangkap dan menganalisis traffic jaringan.
+Mengidentifikasi karakteristik traffic yang digunakan sebagai dasar deteksi port scanning.
+Mengimplementasikan rule-based detection untuk mendeteksi port scanning.
+Menguji aplikasi menggunakan traffic normal dan beberapa variasi port scanning.
+Mengukur Detection Rate, False Positive Rate, False Negative Rate, dan Detection Time.
+Menganalisis pengaruh variasi jumlah port, interval scanning, dan durasi scanning terhadap kemampuan deteksi.
+
+
+5. Manfaat Penelitian
+Menghasilkan aplikasi sederhana untuk mendeteksi aktivitas port scanning.
+Memberikan hasil evaluasi kuantitatif mengenai rule-based detection untuk port scanning.
+Memberikan informasi mengenai karakteristik traffic yang dapat digunakan untuk mendeteksi aktivitas scanning.
+Menjadi referensi untuk penelitian network security berbasis traffic analysis.
+Menerapkan konsep jaringan komputer, TCP, network security, packet analysis, dan Python.
+
+6. Tinjauan Pustaka dan Landasan Teori
+6.1 Penelitian Terkait
+Chabchoub et al. (2014) membahas deteksi vertical port scan berdasarkan jumlah destination port yang berbeda dalam sliding window. Penelitian tersebut menunjukkan bahwa destination port merupakan salah satu karakteristik yang dapat digunakan dalam deteksi port scanning.
+Staniford et al. (2002) membahas deteksi stealthy portscan dan menunjukkan bahwa pendekatan deteksi dapat menggunakan jumlah probe yang berbeda dalam interval waktu tertentu. Penelitian tersebut juga menunjukkan bahwa scanning yang dilakukan secara perlahan menjadi tantangan bagi metode threshold sederhana.
+Bortolameotti et al. (2018) membahas deteksi slow port scan pada flow-based network traffic. Penelitian tersebut menggunakan karakteristik koneksi dan TCP flags dalam membedakan scanner dan traffic normal.
+Ono et al. (2021) membahas metode deteksi port scan dan menunjukkan bahwa threshold merupakan salah satu aspek yang harus diperhatikan dalam proses deteksi. Penelitian tersebut juga menunjukkan bahwa parameter traffic dapat digunakan untuk menentukan indikasi port scanning.
+Penelitian Wu et al. (2023) menunjukkan bahwa port scanning dapat dilakukan secara cepat maupun lambat. Penelitian tersebut mengembangkan metode untuk mendeteksi covert port scan dan menggunakan karakteristik traffic yang berhubungan dengan mode koneksi serta jenis scan.
+Penelitian ini mengambil pendekatan yang lebih sederhana dengan menggunakan rule-based detection berbasis parameter traffic yang dapat diambil langsung dari packet capture.
+6.2 Port Scanning
+Port scanning merupakan aktivitas pengiriman probe atau koneksi menuju port pada host untuk mengetahui port yang tersedia. Pada TCP SYN scan, probe dapat dikirim menggunakan paket SYN dan respons dari target dapat memberikan informasi mengenai kondisi port (Wu et al., 2023).
+6.3 Karakteristik Traffic Port Scanning
+Parameter yang digunakan dalam penelitian:
+Source IP.
+Destination IP.
+Destination port.
+TCP flags.
+Timestamp.
+Jumlah destination port berbeda.
+Jumlah koneksi.
+Connection interval.
+Port scanning dapat menghasilkan banyak destination port berbeda pada target yang sama. Karakteristik tersebut digunakan sebagai salah satu dasar rule detection (Chabchoub et al., 2014).
+6.4 Rule-Based Detection
+Rule-based detection menggunakan aturan tertentu untuk menentukan apakah traffic memenuhi karakteristik scanning.
+Contoh:
+Jika satu source IP mengakses sejumlah destination port berbeda pada satu destination IP dalam interval tertentu dan jumlah port tersebut melewati threshold, maka traffic diberi status port scanning.
+Rule akan diuji menggunakan beberapa nilai threshold.
+6.5 Flow dan Packet Analysis
+Analisis packet dan flow dapat digunakan untuk memperoleh informasi source IP, destination IP, port, timestamp, jumlah paket, serta TCP flags. Karakteristik tersebut digunakan dalam berbagai penelitian deteksi port scanning (Bortolameotti et al., 2018).
+6.6 Packet Capture dengan Scapy
+Scapy menyediakan kemampuan untuk menangkap paket, memfilter paket berdasarkan protokol, membaca field paket, dan menyimpan atau membaca PCAP. Kemampuan tersebut digunakan sebagai dasar implementasi aplikasi (Scapy Project, 2026).
+6.7 Confusion Matrix
+TP merupakan aktivitas scanning yang berhasil dideteksi.
+TN merupakan traffic normal yang berhasil dikategorikan normal.
+FP merupakan traffic normal yang salah dikategorikan sebagai scanning.
+FN merupakan scanning yang tidak terdeteksi.
+Detection Rate = TP / (TP + FN) × 100%
+False Positive Rate = FP / (FP + TN) × 100%
+False Negative Rate = FN / (FN + TP) × 100%
+7. Blok Diagram Sistem
+ 
+Modul aplikasi:
+Packet Capture
+Packet Filtering
+Traffic Feature Extraction
+Scan Detection Engine
+Alert Module
+Logging
+Evaluation
+8. Metode Penelitian
+Metode yang digunakan adalah eksperimen kuantitatif.
+Tahapan:
+Studi literatur.
+Identifikasi karakteristik port scanning.
+Perancangan rule.
+Perancangan aplikasi.
+Implementasi packet capture.
+Implementasi feature extraction.
+Implementasi detection engine.
+Pengumpulan traffic normal.
+Pengumpulan traffic port scanning.
+Pengujian variasi scanning.
+Pencatatan hasil.
+Perhitungan confusion matrix.
+Perhitungan Detection Rate, FPR, FNR, dan Detection Time.
+Analisis hasil.
+Penyusunan kesimpulan.
+Tabel Metode Penelitian:
+Metode/Langkah
+Input
+Proses
+Output
+Tool
+Studi literatur
+Jurnal, artikel, dokumentasi
+Identifikasi karakteristik port scan
+Landasan teori
+Google Scholar, IEEE, Springer
+Perancangan
+Parameter port scanning
+Menentukan rule
+Desain sistem
+Draw.io
+Packet capture
+Traffic
+Menangkap paket
+Packet stream/PCAP
+Python, Scapy
+Filtering
+Packet stream
+Memilih TCP packets
+TCP packets
+Scapy
+Feature extraction
+TCP packets
+Mengambil IP, port, flags, timestamp
+Data traffic
+Python
+Aggregation
+Data traffic
+Mengelompokkan berdasarkan IP dan tujuan
+Traffic window
+Python
+Rule detection
+Traffic window
+Membandingkan parameter dengan threshold
+Normal/Scanning
+Python
+Logging
+Detection result
+Menyimpan hasil
+Dataset eksperimen
+CSV/SQLite
+Evaluation
+Ground truth dan hasil deteksi
+Membentuk confusion matrix
+TP, TN, FP, FN
+Python
+Performance analysis
+Hasil evaluasi
+Menghitung metrik
+DR, FPR, FNR, Detection Time
+Python
+Analisis
+Seluruh hasil
+Membandingkan skenario
+Kesimpulan
+Python/Excel
+
+Skenario pengujian:
+Skenario
+Kondisi
+Variabel
+1
+Traffic normal
+Koneksi normal
+2
+Fast scan
+Banyak port dalam interval pendek
+3
+Medium scan
+Jumlah port dan interval sedang
+4
+Slow scan
+Interval antarprobe diperbesar
+5
+Threshold rendah
+Nilai threshold rendah
+6
+Threshold sedang
+Nilai threshold sedang
+7
+Threshold tinggi
+Nilai threshold tinggi
+
+Ground truth ditentukan berdasarkan skenario eksperimen. Traffic normal diberi label normal. Traffic yang sengaja dijalankan sebagai aktivitas scanning diberi label scanning.
+Pengujian threshold dilakukan untuk mengetahui trade-off antara kemampuan mendeteksi scanning dan false positive.
+9. Daftar Pustaka
+Bortolameotti, R., van der Ham, J., & Sperotto, A. (2018). Detection of slow port scans in flow-based network traffic. PLOS ONE, 13(10), e0204507. https://doi.org/10.1371/journal.pone.0204507
+Chabchoub, Y., Chiky, R., & Dogan, B. (2014). How can sliding HyperLogLog and EWMA detect port scan attacks in IP traffic? Journal of Information Security, 2014. https://doi.org/10.1186/1687-417X-2014-5
+Khraisat, A., Gondal, I., Vamplew, P., & Kamruzzaman, J. (2019). Survey of intrusion detection systems: Techniques, datasets and challenges. Cybersecurity, 2, 20. https://doi.org/10.1186/s42400-019-0038-7
+Ono, H., et al. (2021). A proposal of port scan detection method based on Packet-In Messages in OpenFlow networks and its evaluation. International Journal of Network Management. https://doi.org/10.1002/nem.2174
+Scapy Project. (2026). Scapy documentation. https://scapy.readthedocs.io/
+Staniford, S., Hoagland, J. A., & McAlerney, J. M. (2002). Practical automated detection of stealthy portscans. Journal of Computer Security, 10(1–2), 105–136. https://doi.org/10.3233/JCS-2002-101-205
+Wu, H., Shao, Z., Yang, F., Cheng, G., Hu, X., Ren, J., & Wang, W. (2023). PD-CPS: A practical scheme for detecting covert port scans in high-speed networks. Computer Networks, 231, 109825. https://doi.org/10.1016/j.comnet.2023.109825
+
+
+
+
+
