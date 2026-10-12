@@ -35,7 +35,14 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> int:
-    args = build_parser().parse_args()
+    parser = build_parser()
+    args = parser.parse_args()
+    if args.pcap is not None and not args.pcap.is_file():
+        parser.error(
+            f"PCAP file tidak ditemukan: {args.pcap}. "
+            "Buat rekaman terlebih dahulu dengan tcpdump atau gunakan path "
+            "file yang benar."
+        )
     config = DetectionConfig(
         window_seconds=args.window,
         ttl_seconds=args.ttl,

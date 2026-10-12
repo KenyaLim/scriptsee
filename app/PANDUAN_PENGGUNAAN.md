@@ -133,6 +133,152 @@ digunakan bersamaan.
 Mode PCAP adalah cara paling mudah untuk memulai karena input dapat disimpan,
 diulang, dan dibandingkan dengan ground truth.
 
+## 6A. Test drive lokal tanpa VM
+
+Untuk mencoba aplikasi sekarang, kamu **tidak perlu menyiapkan VM terlebih
+dahulu**. Kamu dapat menguji laptop sendiri dengan cara:
+
+```text
+laptop sendiri sebagai Scanner + Sensor + Target
+```
+
+Fungsi aplikasi ini adalah **menganalisis traffic port scanning**, bukan
+melakukan scanning secara otomatis. Jadi diperlukan dua hal:
+
+1. program perekam traffic, misalnya `tcpdump`;
+2. traffic uji, misalnya Nmap yang diarahkan ke laptop sendiri.
+
+Scanning ke `127.0.0.1` atau alamat IP milik laptop sendiri aman untuk test
+drive karena targetnya adalah komputer sendiri. Jangan mengarahkan Nmap ke
+komputer atau jaringan lain tanpa izin.
+
+### 6A.1 Pasang tool test drive
+
+Jika belum tersedia:
+
+```bash
+sudo apt update
+sudo apt install tcpdump nmap
+```
+
+Pastikan virtual environment aktif untuk menjalankan aplikasi:
+
+```bash
+cd /media/user/D/0-SKRIPSI/scriptsee
+source .venv/bin/activate
+```
+
+### 6A.2 Terminal pertama: mulai merekam traffic
+
+Buka terminal pertama dan jalankan:
+
+```bash
+cd /media/user/D/0-SKRIPSI/scriptsee/app
+sudo tcpdump -i lo -w ../capture.pcap 'ip and tcp'
+```
+
+Keterangan:
+
+- `lo` adalah interface loopback untuk traffic ke `127.0.0.1`;
+- `-w ../capture.pcap` menyimpan hasil rekaman di root repository;
+- perintah ini memang akan terus berjalan sampai dihentikan.
+
+Jangan menekan `Ctrl+C` sebelum traffic uji selesai dibuat.
+
+### 6A.3 Terminal kedua: lakukan scanning ke laptop sendiri
+
+Buka terminal kedua, aktifkan environment, lalu jalankan:
+
+```bash
+cd /media/user/D/0-SKRIPSI/scriptsee
+source .venv/bin/activate
+nmap -sT -p 1-100 127.0.0.1
+```
+
+Perintah tersebut melakukan TCP connect scan ke port 1 sampai 100 pada
+loopback laptop sendiri. Port yang tertutup tetap menghasilkan traffic TCP
+yang dapat dianalisis.
+
+Setelah Nmap selesai, kembali ke terminal pertama dan tekan:
+
+```text
+Ctrl+C
+```
+
+Pastikan file berhasil dibuat:
+
+```bash
+ls -lh /media/user/D/0-SKRIPSI/scriptsee/capture.pcap
+```
+
+Ukuran file harus lebih besar dari nol.
+
+### 6A.4 Analisis file PCAP
+
+Masih dari terminal kedua atau terminal lain:
+
+```bash
+cd /media/user/D/0-SKRIPSI/scriptsee/app
+python detect.py \
+  --pcap ../capture.pcap \
+  --output ../alerts.csv
+```
+
+Kemudian baca hasilnya:
+
+```bash
+cat ../alerts.csv
+```
+
+Dengan default `--ports-threshold 10`, scanning 100 port biasanya diharapkan
+menghasilkan alert jika paket dari Nmap terbaca pada interface `lo`.
+
+Jika belum menghasilkan alert, coba threshold yang lebih rendah untuk
+test-drive:
+
+```bash
+python detect.py \
+  --pcap ../capture.pcap \
+  --output ../alerts-test.csv \
+  --ports-threshold 3 \
+  --connections-threshold 5 \
+  --syn-ratio-threshold 0.50
+```
+
+Threshold rendah ini hanya untuk memastikan alur aplikasi bekerja. Jangan
+langsung menjadikannya threshold final skripsi.
+
+### 6A.5 Alternatif menggunakan alamat IP laptop
+
+Jika ingin menguji traffic melalui interface jaringan, cari alamat IP laptop:
+
+```bash
+ip -4 addr
+```
+
+Kemudian rekam pada interface yang sesuai, misalnya `wlan0` atau `enp3s0`:
+
+```bash
+sudo tcpdump -i wlan0 -w ../capture-lan.pcap 'host ALAMAT_IP_LAPTOP and tcp'
+```
+
+Untuk test drive pertama, loopback `lo` dan `127.0.0.1` lebih mudah karena
+tidak bergantung pada Wi-Fi atau kabel jaringan.
+
+### 6A.6 Apa arti hasil test drive ini?
+
+Test drive lokal membuktikan bahwa:
+
+1. traffic TCP dapat direkam;
+2. Scapy dapat membaca file PCAP;
+3. detector dapat mengambil fitur paket;
+4. rule dapat menghasilkan alert;
+5. hasil dapat ditulis ke CSV.
+
+Test drive ini **belum menjadi eksperimen skripsi final** karena Scanner,
+Sensor, dan Target masih berada di satu laptop. Untuk eksperimen final,
+gunakan jaringan VM terisolasi agar skenarionya lebih terkontrol.
+
 ### 6.1 Menyiapkan file PCAP
 
 File PCAP dapat dibuat menggunakan `tcpdump` pada Sensor:
@@ -324,8 +470,28 @@ cd /media/user/D/0-SKRIPSI/scriptsee/app
 
 ### `No such file or directory` untuk file PCAP
 
-Gunakan path yang benar. Dari folder `app`, file PCAP di root repository
-dipanggil dengan `../capture.pcap`.
+Pesan seperti:
+
+```text
+FileNotFoundError: ... '../capture.pcap'
+```
+
+berarti file PCAP belum ada pada lokasi tersebut. Dari folder `app`, path
+`../capture.pcap` berarti:
+
+```text
+/media/user/D/0-SKRIPSI/scriptsee/capture.pcap
+```
+
+Periksa dengan:
+
+```bash
+ls -lh ../capture.pcap
+```
+
+Jika belum ada, buat rekaman terlebih dahulu menggunakan langkah test drive
+lokal di bagian sebelumnya. Menekan `Ctrl+C` sebelum `tcpdump` menerima paket
+juga dapat menyebabkan file tidak terbentuk atau berukuran nol.
 
 ### Live capture tidak menerima paket
 
