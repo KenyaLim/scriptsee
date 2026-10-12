@@ -73,6 +73,38 @@ cd /media/user/D/0-SKRIPSI/scriptsee
 source .venv/bin/activate
 ```
 
+Pastikan aktivasi berhasil sebelum menjalankan aplikasi. Prompt terminal harus
+memiliki awalan seperti:
+
+```text
+(.venv) kenya@mint ...
+```
+
+Periksa Python dan Scapy yang sedang digunakan:
+
+```bash
+which python
+python -c "import sys, scapy; print(sys.executable); print(scapy.__file__)"
+```
+
+Path Python yang benar harus mengarah ke:
+
+```text
+/media/user/D/0-SKRIPSI/scriptsee/.venv/bin/python
+```
+
+Jika prompt tidak memiliki `(.venv)`, jangan menjalankan `python3` sistem
+untuk aplikasi ini. Aktifkan kembali environment atau gunakan path Python
+virtual environment secara langsung:
+
+```bash
+/media/user/D/0-SKRIPSI/scriptsee/.venv/bin/python \
+  -m pip install -r /media/user/D/0-SKRIPSI/scriptsee/requirements.txt
+```
+
+Perintah `python` dan `python3` dapat menunjuk ke Python yang berbeda. Scapy
+harus dipasang pada Python yang dipakai untuk menjalankan `detect.py`.
+
 Untuk keluar dari environment:
 
 ```bash
@@ -452,12 +484,28 @@ mendapat izin.
 
 ### `ModuleNotFoundError: No module named 'scapy'`
 
-Pastikan virtual environment aktif, lalu pasang dependency:
+Error ini biasanya terjadi karena aplikasi dijalankan dengan Python sistem,
+bukan Python di `.venv`. Pastikan prompt memiliki `(.venv)`, lalu pasang
+dependency:
 
 ```bash
 cd /media/user/D/0-SKRIPSI/scriptsee
 source .venv/bin/activate
 python -m pip install -r requirements.txt
+python -c "import scapy; print(scapy.__file__)"
+```
+
+Jika perintah `python` tidak tersedia atau environment tetap belum aktif,
+gunakan path lengkap:
+
+```bash
+/media/user/D/0-SKRIPSI/scriptsee/.venv/bin/python \
+  -m pip install -r /media/user/D/0-SKRIPSI/scriptsee/requirements.txt
+
+/media/user/D/0-SKRIPSI/scriptsee/.venv/bin/python \
+  /media/user/D/0-SKRIPSI/scriptsee/app/detect.py \
+  --pcap /media/user/D/0-SKRIPSI/scriptsee/capture.pcap \
+  --output /media/user/D/0-SKRIPSI/scriptsee/alerts.csv
 ```
 
 ### `can't open file 'detect.py'`
