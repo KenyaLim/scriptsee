@@ -218,8 +218,6 @@ terhadap kinerja aplikasi.
     label normal.
 13. Evaluasi menggunakan TP, TN, FP, FN, Detection Rate, False Positive Rate,
     False Negative Rate, dan Detection Time.
-14. Pengujian dilakukan hanya pada host yang dimiliki atau telah mendapatkan
-    izin, sehingga penelitian tidak mencakup pemindaian jaringan publik.
 
 4. Tujuan Penelitian
 
