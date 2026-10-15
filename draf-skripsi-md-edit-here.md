@@ -1,4 +1,4 @@
-Rancang Bangun Aplikasi Deteksi Rogue DHCP dan Evil Twin AP pada WLAN Seamless Multi-AP Berbasis Wireless Controller
+Rancang Bangun Aplikasi Deteksi Rogue DHCP dan Evil Twin AP pada WLAN Berbasis Python
 
 
 Proposal Tugas Akhir Skripsi
@@ -20,7 +20,7 @@ UNIVERSITAS KRISTEN DUTA WACANA
 YOGYAKARTA
 2026
 
-Rancang Bangun Aplikasi Deteksi Rogue DHCP dan Evil Twin AP pada WLAN Seamless Multi-AP Berbasis Wireless Controller
+Rancang Bangun Aplikasi Deteksi Rogue DHCP dan Evil Twin AP pada WLAN Berbasis Python
 
 Mata kuliah pendukung
 :
@@ -130,33 +130,33 @@ Kedua serangan ini sering saling berkaitan. Penyerang yang memasang evil twin bi
 Selain itu, jaringan WLAN di kampus dan perkantoran pada praktiknya tidak hanya terdiri dari satu AP. Jaringan tersebut umumnya memakai topologi seamless wireless, yaitu banyak AP yang dikelola oleh satu wireless controller dan memancarkan SSID serta pengaturan keamanan yang sama, sehingga klien dapat berpindah (roaming) antar-AP tanpa memutus koneksi. Pada topologi ini, SSID yang sama bukan tanda AP palsu karena seluruh AP sah memang menggunakan SSID tersebut. Deteksi evil twin menjadi lebih sulit dan risiko AP sah salah ditandai sebagai palsu (false positive) meningkat.
 Berdasarkan hal tersebut, penelitian ini merancang dan membangun aplikasi berbasis Python untuk mendeteksi rogue DHCP server dan evil twin AP pada jaringan WLAN seamless multi-AP berbasis wireless controller. Python dipilih karena memiliki pustaka manipulasi paket seperti Scapy, bersifat lintas platform, dan mudah dikembangkan. Pengujian dilakukan di Laboratorium D yang mensimulasikan satu wireless controller dengan 10 AP secara seamless. Perangkat penyerang dan klien sah dibuat bervariasi, tidak hanya satu laptop dan satu ponsel.
 2. Rumusan Masalah
-Bagaimana merancang dan membangun aplikasi berbasis Python yang dapat mendeteksi rogue DHCP server dan evil twin AP pada jaringan WLAN seamless multi-AP berbasis wireless controller?
-Bagaimana cara aplikasi mengidentifikasi rogue DHCP server berdasarkan analisis pesan DHCP (DISCOVER, OFFER, REQUEST, ACK) dibandingkan daftar server sah?
-Bagaimana cara aplikasi mengidentifikasi evil twin AP pada jaringan ber-SSID sama berdasarkan perbandingan atribut AP seperti BSSID, kanal, jenis enkripsi, dan kekuatan sinyal (RSSI) terhadap daftar AP sah tanpa menandai AP sah sebagai palsu?
-Seberapa baik kinerja aplikasi yang dikembangkan dalam mendeteksi kedua serangan tersebut berdasarkan parameter akurasi, precision, recall, false positive rate, dan waktu deteksi?
+1. Bagaimana merancang dan membangun aplikasi berbasis Python yang dapat mendeteksi rogue DHCP server dan evil twin AP pada jaringan WLAN seamless multi-AP?
+2. Bagaimana cara aplikasi mengidentifikasi rogue DHCP server berdasarkan analisis pesan DHCP (DISCOVER, OFFER, REQUEST, ACK) dibandingkan daftar server sah?
+3. Bagaimana cara aplikasi mengidentifikasi evil twin AP pada jaringan ber-SSID sama berdasarkan perbandingan atribut AP seperti BSSID, kanal, jenis enkripsi, dan kekuatan sinyal (RSSI) terhadap daftar AP sah tanpa menandai AP sah sebagai palsu?
+4. Seberapa baik kinerja aplikasi yang dikembangkan dalam mendeteksi kedua serangan tersebut berdasarkan parameter akurasi, precision, recall, false positive rate, dan waktu deteksi?
 3. Batasan Masalah
-Pengujian dilakukan pada topologi seamless wireless di Laboratorium D, yaitu satu wireless controller yang mengelola 10 AP dengan SSID dan pengaturan keamanan yang sama. Laptop pendeteksi dapat ditempatkan di beberapa titik, sedangkan perangkat penyerang dan perangkat klien sah terdiri dari lebih dari satu perangkat dengan tipe yang bervariasi.
-Aplikasi dikembangkan menggunakan bahasa pemrograman Python dan hanya berfokus pada deteksi dan peringatan (alert), bukan pencegahan aktif, pemblokiran, atau serangan balik.
-Jenis serangan yang dideteksi hanya rogue DHCP server dan evil twin AP; serangan lain seperti DHCP starvation, deauthentication flood, ARP spoofing, dan captive portal phishing tidak dibahas.
-Pengujian dilakukan di Laboratorium D dengan izin pengelola laboratorium dan pada jaringan yang terisolasi dari jaringan produksi. Pengujian tidak dilakukan pada jaringan publik atau milik pihak lain.
-Aplikasi bekerja pada jaringan IPv4; DHCPv6 tidak dibahas.
-Pengujian terbatas pada pita frekuensi dan standar WLAN yang didukung oleh adapter nirkabel yang digunakan serta oleh perangkat controller dan AP di Laboratorium D.
-Hasil penelitian berlaku untuk konfigurasi Laboratorium D [sebutkan merek dan tipe controller dan AP setelah dikonfirmasi] dan belum diuji pada merek atau skala jaringan lain.
-Penelitian ini tidak membahas keamanan sistem aplikasi itu sendiri, misalnya enkripsi log atau autentikasi pengguna aplikasi.
+1. Pengujian dilakukan pada topologi seamless wireless di Laboratorium D, yaitu satu wireless controller yang mengelola 10 AP dengan SSID dan pengaturan keamanan yang sama. Laptop pendeteksi dapat ditempatkan di beberapa titik, sedangkan perangkat penyerang dan perangkat klien sah terdiri dari lebih dari satu perangkat dengan tipe yang bervariasi.
+2. Aplikasi dikembangkan menggunakan bahasa pemrograman Python dan hanya berfokus pada deteksi dan peringatan (alert), bukan pencegahan aktif, pemblokiran, atau serangan balik.
+3. Jenis serangan yang dideteksi hanya rogue DHCP server dan evil twin AP; serangan lain seperti DHCP starvation, deauthentication flood, ARP spoofing, dan captive portal phishing tidak dibahas.
+4. Pengujian dilakukan di Laboratorium D dengan izin pengelola laboratorium dan pada jaringan yang terisolasi dari jaringan produksi. Pengujian tidak dilakukan pada jaringan publik atau milik pihak lain.
+5. Aplikasi bekerja pada jaringan IPv4; DHCPv6 tidak dibahas.
+6. Pengujian terbatas pada pita frekuensi dan standar WLAN yang didukung oleh adapter nirkabel yang digunakan serta oleh perangkat controller dan AP di Laboratorium D.
+7. Hasil penelitian berlaku untuk konfigurasi Laboratorium D [sebutkan merek dan tipe controller dan AP setelah dikonfirmasi] dan belum diuji pada merek atau skala jaringan lain.
+8. Penelitian ini tidak membahas keamanan sistem aplikasi itu sendiri, misalnya enkripsi log atau autentikasi pengguna aplikasi.
 4. Tujuan Penelitian
-Merancang dan membangun aplikasi berbasis Python yang mendeteksi rogue DHCP server dan evil twin AP pada jaringan WLAN seamless multi-AP berbasis wireless controller.
-Mengimplementasikan mekanisme deteksi rogue DHCP server melalui pengiriman paket DHCPDISCOVER dan analisis seluruh DHCPOFFER yang diterima terhadap daftar server sah (whitelist).
-Mengimplementasikan mekanisme deteksi evil twin AP melalui pemindaian AP di sekitar dan analisis ketidakkonsistenan atribut AP, terutama BSSID, kanal, dan enkripsi, terhadap whitelist seluruh AP sah.
-Mengevaluasi kinerja aplikasi menggunakan parameter akurasi, precision, recall, false positive rate, dan waktu deteksi pada skenario serangan simulasi.
+1. Merancang dan membangun aplikasi berbasis Python yang mendeteksi rogue DHCP server dan evil twin AP pada jaringan WLAN seamless multi-AP.
+2. Mengimplementasikan mekanisme deteksi rogue DHCP server melalui pengiriman paket DHCPDISCOVER dan analisis seluruh DHCPOFFER yang diterima terhadap daftar server sah (whitelist).
+3. Mengimplementasikan mekanisme deteksi evil twin AP melalui pemindaian AP di sekitar dan analisis ketidakkonsistenan atribut AP, terutama BSSID, kanal, dan enkripsi, terhadap whitelist seluruh AP sah.
+4. Mengevaluasi kinerja aplikasi menggunakan parameter akurasi, precision, recall, false positive rate, dan waktu deteksi pada skenario serangan simulasi.
 
 5. Manfaat Penelitian
-Memperkuat jaringan internal. Aplikasi memberi administrator gambaran kondisi jaringan: AP mana yang sah dan mana yang mencurigakan, serta server DHCP mana yang berwenang. Dengan deteksi dini terhadap AP palsu dan DHCP server palsu, celah pada lapisan akses dapat segera diketahui dan ditutup, sehingga konfigurasi jaringan (alamat IP, gateway, dan DNS) tetap berasal dari sumber yang sah. Dengan begitu jaringan internal menjadi lebih andal dan terkelola.
-Mencegah adanya penyusup. Peringatan dini dari aplikasi memungkinkan tindakan sebelum penyerang sempat mengalihkan lalu lintas atau mencuri data. Administrator dapat menelusuri perangkat mencurigakan, mengganti kredensial, atau memutus perangkat tersebut dari jaringan. Dengan demikian risiko penyadapan, pencurian kredensial, dan serangan lanjutan seperti MITM dapat ditekan.
-Bagi peneliti: menambah pemahaman tentang protokol DHCP, standar IEEE 802.11, dan teknik analisis paket dengan Python.
-Bagi pengguna jaringan: meningkatkan kewaspadaan terhadap risiko terhubung ke jaringan palsu dan penyadapan data pribadi.
-Bagi penelitian selanjutnya: menjadi dasar pengembangan sistem yang lebih lengkap, misalnya pencegahan aktif, deteksi serangan lain, atau penerapan pembelajaran mesin.
+1. Memperkuat jaringan internal. Aplikasi memberi administrator gambaran kondisi jaringan: AP mana yang sah dan mana yang mencurigakan, serta server DHCP mana yang berwenang. Dengan deteksi dini terhadap AP palsu dan DHCP server palsu, celah pada lapisan akses dapat segera diketahui dan ditutup, sehingga konfigurasi jaringan (alamat IP, gateway, dan DNS) tetap berasal dari sumber yang sah. Dengan begitu jaringan internal menjadi lebih andal dan terkelola.
+2. Mencegah adanya penyusup. Peringatan dini dari aplikasi memungkinkan tindakan sebelum penyerang sempat mengalihkan lalu lintas atau mencuri data. Administrator dapat menelusuri perangkat mencurigakan, mengganti kredensial, atau memutus perangkat tersebut dari jaringan. Dengan demikian risiko penyadapan, pencurian kredensial, dan serangan lanjutan seperti MITM dapat ditekan.
+3. Bagi peneliti: menambah pemahaman tentang protokol DHCP, standar IEEE 802.11, dan teknik analisis paket dengan Python.
+4. Bagi pengguna jaringan: meningkatkan kewaspadaan terhadap risiko terhubung ke jaringan palsu dan penyadapan data pribadi.
+5. Bagi penelitian selanjutnya: menjadi dasar pengembangan sistem yang lebih lengkap, misalnya pencegahan aktif, deteksi serangan lain, atau penerapan pembelajaran mesin.
 6. Tinjauan Pustaka dan Landasan Teori
-6.0. Tinjauan Pustaka
+6.1. Tinjauan Pustaka
 Makarova dan Maksutov (2021) mengembangkan metode untuk mendeteksi rogue DHCP server dan memberikan perlindungan aktif pada host berbasis GNU/Linux. Mereka menjelaskan bahwa server DHCP tidak sah dapat bersaing dengan server sah dan membagikan alamat IP, DNS, serta informasi routing yang salah kepada klien. Penelitian ini relevan sebagai dasar mekanisme deteksi DHCP, tetapi tidak berfokus pada lingkungan WLAN.
 Wachira (2021) merancang intrusion detection system (IDS) khusus untuk mendeteksi rogue DHCP server pada komunikasi WLAN dengan memantau dan menganalisis pesan transaksi DHCP. Pengujian pada jaringan yang berisi server sah dan palsu menunjukkan semua alamat IP yang ditawarkan server palsu berhasil terdeteksi (tingkat deteksi 100%). Penelitian ini menjadi acuan utama untuk analisis pesan DHCP pada penelitian ini.
 Penelitian di Indonesia pada jurnal IJID menerapkan DHCP Snooping dan DHCP Alert untuk mengamankan server DHCP dari serangan rogue DHCP. DHCP Alert memantau proses DORA sehingga hanya terjadi antara server sah dan klien ("The DHCP Snooping and DHCP Alert Method", 2021). Pendekatan ini bergantung pada perangkat jaringan terkelola, sehingga penelitian ini mengambil pendekatan berbasis aplikasi yang tidak memerlukan konfigurasi perangkat tersebut.
@@ -202,7 +202,7 @@ Aplikasi Python (Scapy) berbasis laptop dan ponsel
 Menggabungkan kedua deteksi dalam satu aplikasi
 
 Sebagaimana terlihat pada Tabel 1, belum ada penelitian pada daftar tersebut yang menggabungkan kedua deteksi dalam satu aplikasi.
-6.1. Landasan Teori
+6.2. Landasan Teori
 a. Wireless Local Area Network (WLAN). WLAN adalah jaringan lokal nirkabel berbasis standar IEEE 802.11. Komunikasi antara klien dan AP dilakukan melalui frame manajemen (misalnya beacon, probe request/response, authentication, association), frame kontrol, dan frame data. Beacon frame dikirim AP secara berkala dan memuat informasi seperti SSID, BSSID, kanal, dan jenis enkripsi.
 b. Evil Twin AP. Evil twin adalah AP palsu yang menyamar sebagai AP sah dengan meniru SSID dan kadang MAC address (Seo et al., 2020). Ciri yang dapat dibandingkan dengan AP sah meliputi: (1) satu SSID dengan BSSID yang tidak terdaftar, (2) kanal yang berbeda, (3) jenis enkripsi yang lebih lemah atau terbuka, (4) RSSI yang berbeda dari profil normal, dan (5) vendor OUI pada BSSID yang tidak sesuai.
 c. DHCP dan Rogue DHCP Server. DHCP menyediakan konfigurasi jaringan otomatis melalui proses DORA: Discover, Offer, Request, Acknowledge. Karena klien dapat menerima OFFER dari lebih dari satu server, penyerang dapat memasang server palsu yang membagikan konfigurasi berbahaya (Wachira, 2021; Makarova & Maksutov, 2021). Rogue DHCP dikenali dari Server Identifier, alamat IP/MAC pengirim, serta isi gateway dan DNS pada OFFER yang tidak sesuai dengan data server sah.
@@ -213,7 +213,7 @@ Akurasi = (TP + TN) / (TP + TN + FP + FN) [1]
 Precision = TP / (TP + FP) [2]
 Recall = TP / (TP + FN) [3]
 False positive rate = FP / (FP + TN) [4]
-TP adalah serangan yang terdeteksi dengan benar, TN adalah kondisi normal yang tidak diberi peringatan, FP adalah peringatan palsu, dan FN adalah serangan yang tidak terdeteksi. Persamaan 1 digunakan untuk menilai ketepatan keseluruhan, Persamaan 2 untuk menilai ketepatan peringatan, dan Persamaan 3 untuk menilai kemampuan menangkap serangan.
+TP adalah serangan yang terdeteksi dengan benar, TN adalah kondisi normal yang tidak diberi peringatan, FP adalah peringatan palsu, dan FN adalah serangan yang tidak terdeteksi. Persamaan 1 digunakan untuk menilai ketepatan keseluruhan, Persamaan 2 untuk menilai ketepatan peringatan, Persamaan 3 untuk menilai kemampuan menangkap serangan, dan Persamaan 4 untuk menilai proporsi kondisi normal yang salah diberi peringatan.
 
 7. Blok Diagram Sistem
 Gambaran besar sistem terdiri dari tiga bagian: lingkungan pengujian, modul aplikasi, dan keluaran.
@@ -236,16 +236,16 @@ Gambar 2. Diagram Deteksi Evil Twin
 Gambar 3. Diagram Deteksi Rogue DHCP
 8. Metode Penelitian
 Penelitian ini menggunakan pendekatan eksperimental dengan pengembangan aplikasi secara bertahap.
-Studi literatur: mempelajari WLAN 802.11, arsitektur wireless controller dan roaming, DHCP, evil twin, rogue DHCP, serta penggunaan Python dan Scapy.
-Analisis kebutuhan: menentukan kebutuhan fungsional (pemindaian, deteksi, pelaporan, log) dan kebutuhan perangkat (laptop pendeteksi, adapter nirkabel, perangkat penyerang, dan beberapa perangkat klien).
-Observasi lingkungan Laboratorium D: mencatat merek dan tipe controller dan AP, penempatan 10 AP, kanal, jenis enkripsi, serta pengaturan VLAN dan DHCP. Seluruh BSSID sah dikumpulkan saat jaringan dalam kondisi bersih sebagai baseline (whitelist).
-Perancangan sistem: merancang arsitektur aplikasi, alur deteksi berbasis whitelist multi-BSSID, dan antarmuka (CLI atau GUI sederhana).
-Implementasi: membangun aplikasi dengan Python dan Scapy.
-Pilot testing: melakukan pengujian awal pada 2 sampai 3 AP untuk memvalidasi adapter, skenario serangan, parameter pemindaian, dan prosedur pencatatan.
-Pembangunan skenario pengujian utama: menyiapkan skenario normal dan serangan pada seluruh 10 AP dengan variasi lokasi dan perangkat.
-Pengujian utama: menjalankan seluruh skenario dengan pengulangan.
-Evaluasi: menghitung akurasi, precision, recall, false positive rate, dan waktu deteksi.
-Penyusunan laporan: menarik kesimpulan dan saran.
+1. Studi literatur: mempelajari WLAN 802.11, arsitektur wireless controller dan roaming, DHCP, evil twin, rogue DHCP, serta penggunaan Python dan Scapy.
+2. Analisis kebutuhan: menentukan kebutuhan fungsional (pemindaian, deteksi, pelaporan, log) dan kebutuhan perangkat (laptop pendeteksi, adapter nirkabel, perangkat penyerang, dan beberapa perangkat klien).
+3. Observasi lingkungan Laboratorium D: mencatat merek dan tipe controller dan AP, penempatan 10 AP, kanal, jenis enkripsi, serta pengaturan VLAN dan DHCP. Seluruh BSSID sah dikumpulkan saat jaringan dalam kondisi bersih sebagai baseline (whitelist).
+4. Perancangan sistem: merancang arsitektur aplikasi, alur deteksi berbasis whitelist multi-BSSID, dan antarmuka (CLI atau GUI sederhana).
+5. Implementasi: membangun aplikasi dengan Python dan Scapy.
+6. Pilot testing: melakukan pengujian awal pada 2 sampai 3 AP untuk memvalidasi adapter, skenario serangan, parameter pemindaian, dan prosedur pencatatan.
+7. Pembangunan skenario pengujian utama: menyiapkan skenario normal dan serangan pada seluruh 10 AP dengan variasi lokasi dan perangkat.
+8. Pengujian utama: menjalankan seluruh skenario dengan pengulangan.
+9. Evaluasi: menghitung akurasi, precision, recall, false positive rate, dan waktu deteksi.
+10. Penyusunan laporan: menarik kesimpulan dan saran.
 
 8.1. Pilot Testing
 Pilot testing dilakukan sebelum pengujian utama pada 2 sampai 3 AP di bawah wireless controller yang sama. Tahap ini bertujuan memastikan adapter nirkabel yang digunakan mendukung mode monitor atau managed mode, memastikan eksekusi Python dan Scapy berjalan, memvalidasi pembentukan evil twin dan rogue DHCP, serta menentukan interval pemindaian dan batas waktu tunggu DHCPOFFER. Data pilot digunakan untuk memperbaiki aplikasi dan menetapkan prosedur, tetapi tidak dimasukkan ke hasil pengujian utama.
@@ -328,4 +328,3 @@ Rogue Wi-Fi AP detection with Snappy. (2024). CyLab. https://cylab.be/publicatio
 Seo, J., Cho, C., & Won, Y. (2020). Enhancing the reliability of Wi-Fi network using evil twin AP detection method based on machine learning. Journal of Information Processing Systems, 16(3), 541–556. https://doi.org/10.3745/JIPS.03.0137
 Tian, Y., Wang, S., & Zhang, L. (2021). Convolutional neural network based Evil Twin attack detection in Wi-Fi networks. MATEC Web of Conferences, 336, 08006. https://doi.org/10.1051/matecconf/202133608006
 Wachira, F. N. (2021). A model to detect and prevent rogue DHCP attacks on wireless LAN communication [Thesis, Strathmore University]. https://su-plus.strathmore.edu/items/37fa485a-7053-42dc-bf8e-5697ae78cfe9
-
